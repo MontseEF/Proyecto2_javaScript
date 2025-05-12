@@ -116,7 +116,7 @@ const iniciarJuego = () => {
 iniciarJuego();
 
 //ejemplo de uso//
-const pregunta1 = new Pregunta("¿Cuál es la capital de Francia?", ["París", "Londres", "Berlín"], "París");
-const pregunta2 = new Pregunta("¿Cuál es la capital de España?", ["Madrid", "Barcelona", "Valencia"], "Madrid");        
-console.log(pregunta1.verificarRespuesta(1)); // true
-console.log(pregunta2.verificarRespuesta(2)); // false
+//const pregunta1 = new Pregunta("¿Cuál es la capital de Francia?", ["París", "Londres", "Berlín"], "París");
+//const pregunta2 = new Pregunta("¿Cuál es la capital de España?", ["Madrid", "Barcelona", "Valencia"], "Madrid");        
+//console.log(pregunta1.verificarRespuesta(1)); // true
+//console.log(pregunta2.verificarRespuesta(2)); // false
