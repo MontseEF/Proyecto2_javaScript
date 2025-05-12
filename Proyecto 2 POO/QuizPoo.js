@@ -1,5 +1,4 @@
 //Definir clases//
-
 class Usuario {
     constructor(nombre, edad) {
         this.nombre = nombre;
@@ -36,8 +35,9 @@ class Quiz {
         this.usuarios = [];
         this.encuestas = [];
     }
-
-    // Métodos para crear usuarios y encuestas
+ 
+    //Definir funciones//
+ 
     crearUsuarios() {
         let cantidad = parseInt(prompt("¡Bienvenido a la acción! ¿Cuántos jugadores participarán?"));
         for (let i = 0; i < cantidad; i++) {
@@ -72,12 +72,12 @@ class Quiz {
                     pregunta.opciones.forEach((op, index) => {
                         console.log(`${index + 1}. ${op}`);
                     });
-                    const respuesta = parseInt(prompt("Elige una opción (1-3):")); 
+                    const respuesta = parseInt(prompt("Elige una opción (1-3):"));
                     if (pregunta.verificarRespuesta(respuesta)) {
-                        console.log("!Maravillosamente correcto!");
+                        console.log("¡Bien hecho, la respuesta es correcta!");
                         jugador.puntaje++;
                     } else {
-                        console.log(`¡Buuuu! Incorrecto. La respuesta correcta era: ${pregunta.respuestaCorrecta}`)
+                        console.log(`¡BUUUUU!Incorrecto. La respuesta correcta era: ${pregunta.respuestaCorrecta}`);
                     }
                 }
             }
@@ -112,8 +112,9 @@ class Quiz {
 const quiz = new Quiz();
 quiz.iniciar();
 
+
 //prueba
-const pregunta1 = new Pregunta("¿Cuál es la capital de Francia?", ["París", "Londres", "Berlín"], "París");
-const pregunta2 = new Pregunta("¿Cuál es la capital de España?", ["Madrid", "Barcelona", "Valencia"], "Madrid");        
-console.log(pregunta1.verificarRespuesta(1)); // true
-console.log(pregunta2.verificarRespuesta(2)); // false
+//const pregunta1 = new Pregunta("¿Cuál es la capital de Francia?", ["París", "Londres", "Berlín"], "París");
+//const pregunta2 = new Pregunta("¿Cuál es la capital de España?", ["Madrid", "Barcelona", "Valencia"], "Madrid");        
+//console.log(pregunta1.verificarRespuesta(1)); // true
+//console.log(pregunta2.verificarRespuesta(2)); // false
