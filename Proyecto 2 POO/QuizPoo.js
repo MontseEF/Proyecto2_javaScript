@@ -104,7 +104,7 @@ class Quiz {
             this.crearEncuestas();
             this.jugar();
             this.mostrarResultados();
-        } while (prompt("\n¿Deseas jugar otra vez? git remote add origin https://github.com/MontseEF/Proyecto2_javaScriptPOO.git(s/n):").toLowerCase() === "s");
+        } while (prompt("\n¿Deseas jugar otra vez? (s/n):").toLowerCase() === "s");
     }
 }
 
