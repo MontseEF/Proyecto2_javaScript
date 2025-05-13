@@ -54,7 +54,7 @@ Con respecto a la ejecución de los programas, debo reconocer que es toda una av
 A veces funciona sin ejemplos de uso y otras veces si no están no corre el programa. Así que en cada archivo que subí van mencionados de está manera los ejemplos de uso "//ejemplo//", por si es que lo llegan a necesitar.
 Mientras que en el archivo POO cuando lo quise ejecutar en consola, me aparecía en blanco al momento de responder las preguntas. Para solucionar eso solo apreté el botón "Aceptar" en la pantalla y funcionó sin problemas. Sin embargo, espero de todo corazón que esos problemas no sucedan una vez que los prueben.
 
-Adjunto un vídeo por si acaso:
+Adjunto un vídeo de ejecución para (POO) y (PF) por si acaso:
 ![Video ejecucion POO](https://github.com/user-attachments/assets/8fa59a18-1384-4d8e-b7f4-c1470d15d9e1)
 
 
