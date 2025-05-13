@@ -1,6 +1,7 @@
 # Proyecto 2 JavaScript (POO/PFF)
 Para el fin de módulo 2 se nos solicitó realizar a través de JavaScript un ejercicio en base a encuestas a los usuarios del programa. Estos fueron los requerimientos:
 ![Requerimientos proyecto2](https://github.com/MontseEF/Proyecto2_javaScript/blob/fabbd9d0c938f17b19b6d2755618b922f68e95e2/Captura%20de%20pantalla%202025-05-12%20181600.png)
+
 Teniendo esto en consideración, decidí que lo más fácil para comenzar a trabajar era desglosar los requerimientos en etapas y así trazar una estructura organizada.
 ### Etapa 1: Definir
 
