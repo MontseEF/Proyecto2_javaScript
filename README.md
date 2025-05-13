@@ -50,9 +50,10 @@ Teniendo esto en consideración, decidí que lo más fácil para comenzar a trab
 
   ## Modo de ejecución
 
-Con respecto a la ejecución de los programas, debo reconocer que es toda una aventura. Ya que antes de subirlos funcionaban bien, pero cuando los probé despues de cargarlos a GitHub tuve algunos problemas. Así que dejó aqui escrito que hecer si no parten en consola.
+Con respecto a la ejecución de los programas, debo reconocer que es toda una aventura. Ya que antes de subirlos funcionaban bien, pero cuando los probé despues de cargarlos a GitHub tuve algunos problemas. Así que dejó aqui escrito que hacer si no parten en consola.
 A veces funciona sin ejemplos de uso y otras veces si no están no corre el programa. Así que en cada archivo que subí van mencionados de está manera los ejemplos de uso "//ejemplo//", por si es que lo llegan a necesitar.
-Mientras que en el archivo POO cuando lo quise ejecutar en consola, me aparecía en blanco al momento de responder las preguntas. Para solucionar eso solo aprete el botón "Aceptar" en la pantalla y funcionó sin problemas. Sin embargo, espero de todo corazón que esos problemas no sucedan una vez que los prueben.
+Mientras que en el archivo POO cuando lo quise ejecutar en consola, me aparecía en blanco al momento de responder las preguntas. Para solucionar eso solo apreté el botón "Aceptar" en la pantalla y funcionó sin problemas. Sin embargo, espero de todo corazón que esos problemas no sucedan una vez que los prueben.
 
-Para finalizar, darles la bienvenida a mi Proyecto2. Espero que les guste
-De antemano agradecer que hayan llegado hasta acá en la lectura y también a todo el equipo de la UDD que ha estado presente durante este proceso de aprendizaje, con mucha colaboración y paciencia. En especial al profesor Gonzalo que nos acompañó durante los 2 primeros módulos con una simpatía, carisma y sobre todo una gran disposión a ayudarnos con las dudas o confuciosiones.
+Para finalizar, darles la bienvenida a mi Proyecto2. Espero que les guste.
+
+De antemano agradecer que hayan llegado hasta acá en la lectura y también a todo el equipo de la UDD que ha estado presente durante este proceso de aprendizaje, con mucha colaboración y paciencia. En especial al profesor Gonzalo que nos acompañó durante los 2 primeros módulos con una simpatía, carisma y sobre todo una gran disposión a ayudarnos con las dudas o confusiones.
