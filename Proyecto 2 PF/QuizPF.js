@@ -1,119 +1,126 @@
-//Funciones y constantes para crear el juego de preguntas y respuestas//
-const crearUsuarios = () => {
-  const cantidadTexto = prompt("¡Bienvenido a la acción! ¿Cuántos jugadores participarán?");
-  if (cantidadTexto === null) return null;
+//Crear funciones y constantes//
+function crearJugadores() {
+    const cantidadInput = prompt("¡Bienvenido a la acción! ¿Cuántos jugadores participarán?");
+    if (cantidadInput === null) return null;
+    const cantidad = parseInt(cantidadInput);
+    if (isNaN(cantidad) || cantidad < 1) return null;
 
-  const cantidad = parseInt(cantidadTexto);
-  if (isNaN(cantidad) || cantidad < 1) return null;
+    const jugadores = [];
 
-  return Array.from({ length: cantidad }, (_, i) => {
-    const nombre = prompt(`Nombre del jugador ${i + 1}:`);
-    if (nombre === null) return null;
+    for (let i = 0; i < cantidad; i++) {
+        const nombre = prompt(`Nombre del jugador ${i + 1}:`);
+        if (nombre === null) return null;
+        const edadInput = prompt(`Edad del jugador ${i + 1}:`);
+        if (edadInput === null) return null;
+        const edad = parseInt(edadInput);
+        if (isNaN(edad)) return null;
+        jugadores.push({ nombre, edad, puntaje: 0 });
+    }
 
-    let edad;
+    return jugadores;
+}
+
+function crearEncuestas(jugadores) {
+    const encuestas = [];
+
+    for (let jugador of jugadores) {
+        console.log(`\n--- ${jugador.nombre}, crea tus 8 preguntas ---`);
+        const preguntas = [];
+
+        for (let i = 0; i < 8; i++) {
+            const enunciado = prompt(`Pregunta ${i + 1}:`);
+            if (enunciado === null) return null;
+            const correcta = prompt("Respuesta correcta:");
+            if (correcta === null) return null;
+            const falsa1 = prompt("Respuesta falsa 1:");
+            if (falsa1 === null) return null;
+            const falsa2 = prompt("Respuesta falsa 2:");
+            if (falsa2 === null) return null;
+
+            const opciones = [correcta, falsa1, falsa2].sort(() => Math.random() - 0.5);
+
+            preguntas.push({
+                pregunta: enunciado,
+                opciones,
+                respuestaCorrecta: correcta
+            });
+        }
+
+        encuestas.push({ creador: jugador.nombre, preguntas });
+    }
+
+    return encuestas;
+}
+
+function verificarRespuesta(opciones, respuesta, correcta) {
+    return opciones[respuesta - 1] === correcta;
+}
+
+function jugar(jugadores, encuestas) {
+    for (let encuesta of encuestas) {
+        console.log(`\n Ronda de preguntas de ${encuesta.creador}`);
+        for (let pregunta of encuesta.preguntas) {
+            for (let jugador of jugadores) {
+                console.log(`\n${jugador.nombre}, responde:`);
+                console.log(pregunta.pregunta);
+                pregunta.opciones.forEach((op, idx) => {
+                    console.log(`${idx + 1}. ${op}`);
+                });
+
+                const entrada = prompt(`${jugador.nombre}, elige una opción (1-3):`);
+                if (entrada === null) return false;
+                const respuesta = parseInt(entrada);
+                if (isNaN(respuesta) || respuesta < 1 || respuesta > 3) {
+                    alert("Opción inválida. Se salta la pregunta.");
+                    continue;
+                }
+
+                if (verificarRespuesta(pregunta.opciones, respuesta, pregunta.respuestaCorrecta)) {
+                    alert("¡Bien hecho, la respuesta es correcta!");
+                    jugador.puntaje++;
+                } else {
+                    alert(`¡BUUUUU! Incorrecto. La respuesta correcta era: ${pregunta.respuestaCorrecta}`);
+                }
+            }
+        }
+    }
+
+    return true;
+}
+
+function mostrarResultados(jugadores) {
+    console.log("\n=== RESULTADOS ===");
+    let ganador = jugadores[0];
+
+    for (let jugador of jugadores) {
+        console.log(`${jugador.nombre}: ${jugador.puntaje} puntos`);
+        if (jugador.puntaje > ganador.puntaje) {
+            ganador = jugador;
+        }
+    }
+
+    console.log(`\n El ganador es: ${ganador.nombre}`);
+    alert(` El ganador es: ${ganador.nombre}`);
+}
+
+function iniciarJuego() {
     do {
-      const edadTexto = prompt(`Edad del jugador ${i + 1}:`);
-      if (edadTexto === null) return null;
-      edad = parseInt(edadTexto);
-      if (isNaN(edad)) {
-        alert("Por favor ingresa un número válido para la edad.");
-      }
-    } while (isNaN(edad));
+        const jugadores = crearJugadores();
+        if (!jugadores) return;
 
-    return {
-      nombre,
-      edad,
-      puntaje: 0
-    };
-  }).filter(Boolean);
-};
+        const encuestas = crearEncuestas(jugadores);
+        if (!encuestas) return;
 
-const crearPreguntas = (cantidad = 8) =>
-  Array.from({ length: cantidad }, (_, i) => {
-    const pregunta = prompt(`Pregunta ${i + 1}:`);
-    if (pregunta === null) return null;
+        const continuar = jugar(jugadores, encuestas);
+        if (!continuar) return;
 
-    const correcta = prompt("Respuesta correcta:");
-    if (correcta === null) return null;
+        mostrarResultados(jugadores);
+    } while (prompt("\n¿Deseas jugar otra vez? (s/n):")?.toLowerCase() === "s");
+}
 
-    const falsa1 = prompt("Respuesta falsa 1:");
-    if (falsa1 === null) return null;
-
-    const falsa2 = prompt("Respuesta falsa 2:");
-    if (falsa2 === null) return null;
-
-    const opciones = [correcta, falsa1, falsa2].sort(() => Math.random() - 0.5);
-
-    return {
-      pregunta,
-      opciones,
-      respuestaCorrecta: correcta
-    };
-  }).filter(Boolean);
-
-const obtenerRespuesta = () => {
-  let respuesta;
-  do {
-    const entrada = prompt("Elige una opción (1-3):");
-    if (entrada === null) return null;
-    respuesta = parseInt(entrada);
-  } while (isNaN(respuesta) || respuesta < 1 || respuesta > 3);
-  return respuesta;
-};
-
-const jugarRonda = (usuarios, preguntas) =>
-  usuarios.map(usuario => {
-    const puntaje = preguntas.reduce((acc, pregunta) => {
-      console.log(`\n${usuario.nombre}, responde: ${pregunta.pregunta}`);
-      pregunta.opciones.forEach((op, i) => {
-        console.log(`${i + 1}. ${op}`);
-      });
-
-      const respuesta = obtenerRespuesta();
-      if (respuesta === null) return acc;
-
-      const correcta = pregunta.opciones[respuesta - 1] === pregunta.respuestaCorrecta;
-      console.log(correcta ? "¡Bien hecho! Respuesta correcta" : `¡BUUUUU! Incorrecto. Era: ${pregunta.respuestaCorrecta}`);
-      return correcta ? acc + 1 : acc;
-    }, 0);
-
-    return { ...usuario, puntaje };
-  });
-
-const mostrarResultados = usuarios => {
-  console.log("\nResultados finales:");
-  usuarios.forEach(usuario => {
-    console.log(`${usuario.nombre}: ${usuario.puntaje} puntos`);
-  });
-};
-
-const reiniciarJuego = () => {
-  const continuar = prompt("¿Quieres jugar otra ronda? (Sí/No)").toLowerCase();
-  return continuar === "sí" || continuar === "si";
-};
-
-const iniciarJuego = () => {
-  let continuarJugando = true;
-
-  while (continuarJugando) {
-    const usuarios = crearUsuarios();
-    if (!usuarios || usuarios.length === 0) return;
-
-    const preguntas = crearPreguntas(8);
-    if (!preguntas || preguntas.length === 0) return;
-
-    const usuariosFinal = jugarRonda(usuarios, preguntas);
-    mostrarResultados(usuariosFinal);
-
-    // Preguntar si el jugador quiere seguir jugando
-    continuarJugando = reiniciarJuego();
-  }
-
-  console.log("¡Gracias por jugar!");
-};
-
-// Ejecutar el juego
 iniciarJuego();
+
+
 
 //ejemplo de uso//
 //const pregunta1 = new Pregunta("¿Cuál es la capital de Francia?", ["París", "Londres", "Berlín"], "París");
